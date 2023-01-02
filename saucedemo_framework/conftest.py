@@ -1,6 +1,5 @@
 import pytest
 from saucedemo_framework.page_objects.login_page import LoginPage
-from saucedemo_framework.page_objects.store_page import StorePage
 from saucedemo_framework.utilities.config_parser import ReadConfig
 from saucedemo_framework.utilities.driver_factory import DriverFactory
 

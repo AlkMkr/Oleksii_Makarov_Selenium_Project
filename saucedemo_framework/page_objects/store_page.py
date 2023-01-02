@@ -13,49 +13,49 @@ class StorePage(BasePage):
         self._click(p.burger_menu_button_locator)
         return self
 
-    def _is_burger_menu_located(self):
+    def _is_burger_menu_located(self) -> bool:
         """
             Checks if burger menu is displayed.
             Returns True or False.
         """
         return self._is_displayed(p.burger_menu_locator)
 
-    def _is_burger_menu_about_displayed(self):
+    def _is_burger_menu_about_displayed(self) -> bool:
         """
             Checks if About button in burger menu is displayed.
             Returns True or False.
         """
         return self._is_displayed(p.burger_about_button_locator)
 
-    def _is_burger_menu_reset_displayed(self):
+    def _is_burger_menu_reset_displayed(self) -> bool:
         """
             Checks if Reset button in burger menu is displayed.
             Returns True or False.
         """
         return self._is_displayed(p.burger_reset_button_locator)
 
-    def _is_burger_menu_all_items_displayed(self):
+    def _is_burger_menu_all_items_displayed(self) -> bool:
         """
             Checks if All Items button in burger menu is displayed.
             Returns True or False.
         """
         return self._is_displayed(p.burger_all_items_button_locator)
 
-    def _is_burger_menu_logout_displayed(self):
+    def _is_burger_menu_logout_displayed(self) -> bool:
         """
             Checks if Logout button in burger menu is displayed.
             Returns True or False.
         """
         return self._is_displayed(p.logout_button_locator)
 
-    def _is_burger_menu_close_button_located(self):
+    def _is_burger_menu_close_button_located(self) -> bool:
         """
             Checks if Close(x) button in burger menu is displayed.
             Returns True or False.
         """
         return self._is_displayed(p.burger_menu_close_locator)
 
-    def is_burger_menu_filled(self):
+    def is_burger_menu_filled(self) -> bool:
         """
             Checks if burger menu and all buttons in it are displayed.
             Returns True or False.
@@ -74,11 +74,9 @@ class StorePage(BasePage):
     def _logout(self):
         """
             Clicks on Logout button in already opened burger menu.
-            Returns a copy of LoginPage class, allowing to use its methods.
         """
         self._click(p.logout_button_locator)
-        from saucedemo_framework.page_objects.login_page import LoginPage
-        return LoginPage(self._driver)
+        return self
 
     def add_backpack_one_to_cart(self):
         """
@@ -96,7 +94,7 @@ class StorePage(BasePage):
         from saucedemo_framework.page_objects.cart_page import CartPage
         return CartPage(self._driver)
 
-    def is_secondary_header_located(self):
+    def is_secondary_header_located(self) -> bool:
         """
             Checks if secondary header for Store Page is displayed.
             Returns True or False.

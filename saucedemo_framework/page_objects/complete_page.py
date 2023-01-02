@@ -15,7 +15,7 @@ class CompletePage(BasePage):
         from saucedemo_framework.page_objects.store_page import StorePage
         return StorePage(self._driver)
 
-    def is_header_visible(self):
+    def is_header_visible(self) -> bool:
         """
             Checks if secondary header of Complete Page is displayed.
             Returns True or False.

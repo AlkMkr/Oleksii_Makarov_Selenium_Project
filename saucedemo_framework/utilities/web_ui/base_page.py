@@ -8,7 +8,7 @@ class BasePage:
         self._driver = driver
         self.__wait = WebDriverWait(self._driver, 5)
 
-    def _wait_until_element_located(self, locator):
+    def _wait_until_element_located(self, locator: str):
         """
             Takes locator as a parameter.
             Return an element based on its locator, when driver locates it on the HTML DOM.
@@ -16,7 +16,7 @@ class BasePage:
         """
         return self.__wait.until(EC.presence_of_element_located(locator))
 
-    def _wait_until_element_clickable(self, locator):
+    def _wait_until_element_clickable(self, locator: str):
         """
             Takes locator as a parameter.
             Return an element based on its locator, when driver recognize that it's visible and clickable on webpage.
@@ -32,7 +32,7 @@ class BasePage:
         """
         return self.__wait.until(EC.visibility_of_element_located(locator))
 
-    def _send_keys(self, locator, value, is_clear=True):
+    def _send_keys(self, locator: str, value: str, is_clear=True):
         """
             Takes three parameters. Locator, value and is_clear.
             Waits until element is located.
@@ -44,7 +44,7 @@ class BasePage:
             element.clear()
         element.send_keys(value)
 
-    def _click(self, locator):
+    def _click(self, locator: str):
         """
             Takes locator as a parameter.
             Waits until element is clickable.
@@ -53,7 +53,7 @@ class BasePage:
         element = self._wait_until_element_clickable(locator)
         element.click()
 
-    def _is_displayed(self, locator):
+    def _is_displayed(self, locator: str) -> bool:
         """
             Takes one parameter: locator.
             If driver can recognize that element is visible, return True.

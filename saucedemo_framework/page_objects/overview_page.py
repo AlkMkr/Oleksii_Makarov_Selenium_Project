@@ -6,7 +6,7 @@ class OverviewPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
-    def is_overview_header_title_visible(self):
+    def is_overview_header_title_visible(self) -> bool:
         """
             Checks if Overview Page secondary header is displayed.
             Returns True or False.
