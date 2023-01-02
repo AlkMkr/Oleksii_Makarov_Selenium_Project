@@ -88,7 +88,7 @@ class StorePage(BasePage):
     def open_cart(self):
         """
             Clicks on Cart button.
-            Returns a copy of CartPage class, allowing to use its methods.
+            Returns page object CartPage, allowing to use its methods.
         """
         self._click(p.cart_store_button_locator)
         from saucedemo_framework.page_objects.cart_page import CartPage
@@ -104,7 +104,7 @@ class StorePage(BasePage):
     def quick_logout(self):
         """
             Opens burger menu and clicks on logout button.
-            Returns a copy of LoginPage class, allowing to use its methods
+            Returns a page object LoginPage, allowing to use its methods
         """
         self.open_burger_menu()._logout()
         from saucedemo_framework.page_objects.login_page import LoginPage

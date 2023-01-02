@@ -16,7 +16,7 @@ class OverviewPage(BasePage):
     def cancel_overview(self):
         """
             Clicks on Cancel button on Overview page.
-            Returns a copy of StorePage class, allowing to use its methods.
+            Returns a page object StorePage, allowing to use its methods.
         """
         self._click(p.overview_cancel_button)
         from saucedemo_framework.page_objects.store_page import StorePage
@@ -25,7 +25,7 @@ class OverviewPage(BasePage):
     def finish_overview(self):
         """
             Clicks on Finish Overview button.
-            Returns a copy of CompletePage class, allowing to use its methods.
+            Returns a page object CompletePage, allowing to use its methods.
         """
         self._click(p.overview_finish_button)
         from saucedemo_framework.page_objects.complete_page import CompletePage
@@ -48,7 +48,7 @@ class OverviewPage(BasePage):
     def fast_logout(self):
         """
             Opens Burger menu and clicks on logout button.
-            Returns a copy of LoginPage class, allowing to use its methods.
+            Returns a page object LoginPage, allowing to use its methods.
         """
         self._open_burger_menu()._logout()
         from saucedemo_framework.page_objects.login_page import LoginPage

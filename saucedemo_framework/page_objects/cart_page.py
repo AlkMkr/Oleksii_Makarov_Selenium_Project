@@ -131,7 +131,6 @@ class CartPage(BasePage):
     def _logout(self):
         """
             Clicks on Logout button in already opened burger menu.
-            Returns a copy of LoginPage class, allowing to use its methods.
         """
         self._click(p.logout_button_locator)
         return self
@@ -139,7 +138,7 @@ class CartPage(BasePage):
     def quick_logout(self) -> LoginPage:
         """
             Opens burger menu and clicks on logout button.
-            Returns page object LoginPage, allowing to use its methods
+            Returns a page object LoginPage, allowing to use its methods
         """
         self.open_burger_menu()._logout()
         from saucedemo_framework.page_objects.login_page import LoginPage

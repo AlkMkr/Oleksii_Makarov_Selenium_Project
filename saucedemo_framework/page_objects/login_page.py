@@ -30,7 +30,7 @@ class LoginPage(BasePage):
     def login(self, login_value: str, password_value: str):
         """
             Takes two parameters and sends them to Login field and Password field respectively.
-            Returns a copy of StorePage class, allowing to use its methods.
+            Returns a page object StorePage, allowing to use its methods.
         """
         self._set_login(login_value)._set_password(password_value)._press_login()
         from saucedemo_framework.page_objects.store_page import StorePage

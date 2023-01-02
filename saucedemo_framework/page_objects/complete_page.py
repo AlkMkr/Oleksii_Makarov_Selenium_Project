@@ -9,7 +9,7 @@ class CompletePage(BasePage):
     def complete_back_home(self):
         """
             Clicks on Back Home button.
-            Returns a copy of StorePage class, allowing to use its methods.
+            Returns a page object StorePage, allowing to use its methods.
         """
         self._click(p.complete_page_back)
         from saucedemo_framework.page_objects.store_page import StorePage
@@ -39,7 +39,7 @@ class CompletePage(BasePage):
     def fast_logout(self):
         """
             Opens Burger menu and clicks on Logout Button.
-            Returns a copy of LoginPage class, allowing to use its methods.
+            Returns a page object LoginPage, allowing to use its methods.
         """
         self._open_burger_menu()._logout()
         from saucedemo_framework.page_objects.login_page import LoginPage
