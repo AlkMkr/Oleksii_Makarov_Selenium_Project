@@ -59,4 +59,3 @@ def test_checkout_cart(open_cart_page_with_item):
     cart_page = open_cart_page_with_item
     checkout_page = cart_page.click_checkout()
     assert checkout_page.check_if_checkout_page_header_visible() is True, 'Checkout unsuccessful'
-

@@ -4,14 +4,14 @@ from saucedemo_framework.utilities.config_parser import ReadConfig
 
 
 @pytest.mark.smoke
-def test_login_page(open_login_page):
+def test_login_page(open_login_page, env):
     """
         Precondition: none.
         Fills Login and Password field with info from config. Clicks on Login Button
         Checks if Store page secondary Header is displayed.
     """
     login_page = open_login_page
-    store_page = login_page.login(ReadConfig.get_login(), ReadConfig.get_password())
+    store_page = login_page.login(env.login, env.password)
     assert store_page.is_secondary_header_located() is True, 'User was not logged in'
 
 
