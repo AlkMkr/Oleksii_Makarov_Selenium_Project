@@ -6,6 +6,6 @@
   "last_name": "Oliver",
   "postal_code": "12345",
   "browser_id": "1",
-  "is_headless": true,
+  "is_headless": false,
   "debug_mode": false
 }
