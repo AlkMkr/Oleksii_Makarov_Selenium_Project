@@ -1,19 +1,33 @@
+import json
+
 import pytest
+
+from saucedemo_framework.CONSTANTS import ROOT_DIR
 from saucedemo_framework.page_objects.login_page import LoginPage
-from saucedemo_framework.utilities.config_parser import ReadConfig
+from saucedemo_framework.utilities.config import Config
 from saucedemo_framework.utilities.driver_factory import DriverFactory
 
 
+@pytest.fixture(scope='session')
+def env():
+    """
+        Reads data from json config.
+    """
+    with open(f'{ROOT_DIR}/configurations/config.json') as file:
+        env_dict = json.loads(file.read())
+    return Config(**env_dict)
+
+
 @pytest.fixture()
-def create_driver():
+def create_driver(env):
     """
         Creates webdriver based on data in config. Opens site based on config data. Maximizes window. Yields driver.
         Can be headless.
     """
-    driver = DriverFactory.create_driver(driver_id=ReadConfig.get_driver_id(),
-                                         is_headless=ReadConfig.get_headless())
+    driver = DriverFactory.create_driver(driver_id=env.browser_id,
+                                         is_headless=env.is_headless)
     driver.maximize_window()
-    driver.get(ReadConfig.get_base_url())
+    driver.get(env.base_url)
     yield driver
     driver.quit()
 
@@ -27,12 +41,12 @@ def open_login_page(create_driver):
 
 
 @pytest.fixture()
-def open_store_page(open_login_page):
+def open_store_page(open_login_page, env):
     """
         Repeats sequence of open_login_page fixture. Logins into the site using data from config.
         Returns page object of Store Page.
     """
-    store_page = open_login_page.login(ReadConfig.get_login(), ReadConfig.get_password())
+    store_page = open_login_page.login(env.login, env.password)
     return store_page
 
 
@@ -73,8 +87,8 @@ def open_overview_page(open_checkout_page):
         Continues Checkout.
         Returns page object of Overview Page.
     """
-    overview_page = open_checkout_page.full_continue_checkout(ReadConfig.get_first_name(), ReadConfig.get_last_name(),
-                                                              ReadConfig.get_postal_code())
+    overview_page = open_checkout_page.full_continue_checkout(env.first_name, env.last_name,
+                                                              env.postal_code)
     return overview_page
 
 

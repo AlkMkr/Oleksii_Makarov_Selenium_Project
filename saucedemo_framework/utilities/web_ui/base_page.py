@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class BasePage:
     def __init__(self, driver):
         self._driver = driver
-        self.__wait = WebDriverWait(self._driver, 5)
+        self.__wait = WebDriverWait(self._driver, 3)
 
     def _wait_until_element_located(self, locator: str):
         """

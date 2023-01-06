@@ -3,7 +3,7 @@ import configparser
 from saucedemo_framework.CONSTANTS import ROOT_DIR
 
 config = configparser.RawConfigParser()
-config.read(f'{ROOT_DIR}\configurations\configuration.ini')
+config.read(f'{ROOT_DIR}/configurations/configuration.ini')
 
 
 class ReadConfig:
