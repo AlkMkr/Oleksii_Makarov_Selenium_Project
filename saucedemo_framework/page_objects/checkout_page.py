@@ -1,3 +1,4 @@
+from saucedemo_framework.page_objects.burger_menu import BurgerMenu
 from saucedemo_framework.utilities.web_ui.base_page import BasePage
 from saucedemo_framework.locators import locators as p
 
@@ -99,32 +100,10 @@ class CheckoutPage(BasePage):
                                                                   self._is_last_name_error_visible(),
                                                                   self._is_postal_code_error_visible()])
 
-    def _open_burger_menu(self):
+    def open_burger_menu(self) -> BurgerMenu:
         """
-            Opens Burger Menu
+            CLicks on Burger Menu.
+            Returns a page object BurgerMenu, allowing to use its methods.
         """
         self._click(p.burger_menu_button_locator)
-        return self
-
-    def close_burger_menu(self):
-        """
-            Closes Burger Menu
-        """
-        self._click(p.burger_menu_close_locator)
-        return self
-
-    def _logout(self):
-        """
-            Clicks on Logout button in already opened burger menu.
-        """
-        self._click(p.logout_button_locator)
-        return self
-
-    def quick_logout(self):
-        """
-            Opens burger menu and clicks on logout button.
-            Returns page object LoginPage, allowing to use its methods
-        """
-        self._open_burger_menu()._logout()
-        from saucedemo_framework.page_objects.login_page import LoginPage
-        return LoginPage(self._driver)
+        return BurgerMenu(self._driver)

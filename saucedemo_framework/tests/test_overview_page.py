@@ -21,7 +21,7 @@ def test_logout_from_overview(open_overview_page):
         Checks if Login button is present in Login Page.
     """
     overview = open_overview_page
-    login_page = overview.fast_logout()
+    login_page = overview.open_burger_menu().logout()
     assert login_page.is_login_button_displayed() is True, 'Logout unsuccessful'
 
 
@@ -57,5 +57,5 @@ def test_complete_page_logout(open_complete_page):
         Checks if Login button is present in Login Page.
     """
     complete_page = open_complete_page
-    login_page = complete_page.fast_logout()
+    login_page = complete_page.open_burger_menu().logout()
     assert login_page.is_login_button_displayed() is True, 'Logout was unsuccessful'

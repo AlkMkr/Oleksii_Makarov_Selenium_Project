@@ -13,7 +13,7 @@ def env():
     """
         Reads data from json config.
     """
-    with open(f'{ROOT_DIR}/configurations/config.json') as file:
+    with open(f'{ROOT_DIR}\configurations\config.json') as file:
         env_dict = json.loads(file.read())
     return Config(**env_dict)
 
@@ -81,7 +81,7 @@ def open_checkout_page(open_cart_page_with_item):
 
 
 @pytest.fixture()
-def open_overview_page(open_checkout_page):
+def open_overview_page(open_checkout_page, env):
     """
         Repeats sequence of open_checkout_page fixture. Fill fields of checkout page with data from config.
         Continues Checkout.

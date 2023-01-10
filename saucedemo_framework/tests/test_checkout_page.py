@@ -45,5 +45,5 @@ def test_checkout_logout(open_checkout_page):
         Checks if Login Button is displayed on login Page. Asserting if Logout was successful.
     """
     checkout_page = open_checkout_page
-    login_page = checkout_page.quick_logout()
+    login_page = checkout_page.open_burger_menu().logout()
     assert login_page.is_login_button_displayed() is True, 'Logout unsuccessful'

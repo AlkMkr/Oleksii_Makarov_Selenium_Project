@@ -9,7 +9,7 @@ def test_logout(open_store_page):
         Checks if Login Button is present on Login Page.
     """
     store_page = open_store_page
-    login_page = store_page.quick_logout()
+    login_page = store_page.open_burger_menu().logout()
     assert login_page.is_login_button_displayed() is True, 'Logout was unsuccessful'
 
 
@@ -21,8 +21,8 @@ def test_burger_menu(open_store_page):
         Checks if Burger menu and all buttons inside are displayed.
     """
     store_page = open_store_page
-    store_page.open_burger_menu()
-    assert store_page.is_burger_menu_filled() is True, 'Burger menu was not opened'
+    burger_menu = store_page.open_burger_menu()
+    assert burger_menu.is_burger_menu_filled() is True, 'Burger menu was not opened'
 
 
 @pytest.mark.regression
