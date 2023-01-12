@@ -1,3 +1,4 @@
+from saucedemo_framework.page_objects.burger_menu import BurgerMenu
 from saucedemo_framework.utilities.web_ui.base_page import BasePage
 from saucedemo_framework.locators import locators as p
 
@@ -31,25 +32,10 @@ class OverviewPage(BasePage):
         from saucedemo_framework.page_objects.complete_page import CompletePage
         return CompletePage(self._driver)
 
-    def _open_burger_menu(self):
+    def open_burger_menu(self) -> BurgerMenu:
         """
-            Opens Burger menu.
+            CLicks on Burger Menu.
+            Returns a page object BurgerMenu, allowing to use its methods.
         """
         self._click(p.burger_menu_button_locator)
-        return self
-
-    def _logout(self):
-        """
-            Clicks on Logout button in burger menu.
-        """
-        self._click(p.logout_button_locator)
-        return self
-
-    def fast_logout(self):
-        """
-            Opens Burger menu and clicks on logout button.
-            Returns a page object LoginPage, allowing to use its methods.
-        """
-        self._open_burger_menu()._logout()
-        from saucedemo_framework.page_objects.login_page import LoginPage
-        return LoginPage(self._driver)
+        return BurgerMenu(self._driver)

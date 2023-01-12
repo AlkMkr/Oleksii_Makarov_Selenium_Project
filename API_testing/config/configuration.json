@@ -1,0 +1,11 @@
+{
+  "base_url": "https://reqres.in",
+  "first_name": "Bilbo",
+  "last_name": "Baggins",
+  "email": "ring_thief@shire.com",
+  "first_name1" : "George",
+  "last_name1": "Bluth",
+  "email1": "george.bluth@reqres.in",
+  "register_email1": "alekseymkaale@gmail.com",
+  "register_password1" : "saint123"
+}

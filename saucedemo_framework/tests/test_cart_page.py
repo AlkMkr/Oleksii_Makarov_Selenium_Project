@@ -33,8 +33,8 @@ def test_burger_menu_cart(open_cart_page):
         Checks if Burger menu and it's buttons are displayed.
     """
     cart_page = open_cart_page
-    cart_page.open_burger_menu()
-    assert cart_page.is_burger_menu_filled() is True, 'Burger menu was not opened'
+    burger_menu = cart_page.open_burger_menu()
+    assert burger_menu.is_burger_menu_filled() is True, 'Burger menu was not opened'
 
 
 @pytest.mark.regression
@@ -45,7 +45,7 @@ def test_logout_from_cart(open_cart_page):
         Checks if Login Button is displayed on login Page. Asserting if Logout was successful.
     """
     cart_page = open_cart_page
-    login_page = cart_page.quick_logout()
+    login_page = cart_page.logout()
     assert login_page.is_login_button_displayed() is True, 'Logout unsuccessful'
 
 
