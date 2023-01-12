@@ -1,9 +1,11 @@
 import json
 
 from API_testing.utilities.base_api import BaseAPI
+from saucedemo_framework.utilities.decorator import auto_add_step
 
 
-class TestAPI(BaseAPI):
+@auto_add_step
+class UserAPI(BaseAPI):
 
     def __init__(self, env):
         super().__init__(env)

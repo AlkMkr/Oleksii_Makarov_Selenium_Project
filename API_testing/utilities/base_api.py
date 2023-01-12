@@ -1,6 +1,9 @@
 import requests
 
+from saucedemo_framework.utilities.decorator import auto_add_step
 
+
+@auto_add_step
 class BaseAPI:
     def __init__(self, env):
         self.__base_url = env.base_url

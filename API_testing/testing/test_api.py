@@ -4,14 +4,14 @@ import pytest
 
 from API_testing.data.person_data import Person
 
-from API_testing.objects.person_page import TestAPI
+from API_testing.api_collections.person_page import UserAPI
 
 
 def test_get_user(env):
     """
         Test response for GET request, for user.
     """
-    response = TestAPI(env).get_user(1)
+    response = UserAPI(env).get_user(1)
     assert response.status_code == HTTPStatus.OK, f'Request failed: Status Code {response.status_code}' \
                                                   f'Expected: {HTTPStatus.OK}'
 
@@ -21,7 +21,7 @@ def test_person_data(created_person, env):
         Test response for GET request comparing response body to config data.
     """
     expected_person = created_person
-    response = TestAPI(env).get_user(1)
+    response = UserAPI(env).get_user(1)
     person_data = response.json()
     actual_person = Person.from_json(**person_data)
     assert expected_person == actual_person, f'Created wrong user.'
@@ -32,7 +32,7 @@ def test_create_person(env):
         Test response for POST request, to create user.
     """
     bilbo = Person(env.first_name, env.last_name, env.email)
-    response = TestAPI(env).create_user(bilbo.get_dict())
+    response = UserAPI(env).create_user(bilbo.get_dict())
     assert response.status_code == HTTPStatus.CREATED, f'Failed to create new User'
 
 
@@ -41,7 +41,7 @@ def test_get_list_of_people(env, page):
     """
         Test response for GET request for list of users.
     """
-    response = TestAPI(env).get_list_of_users(page)
+    response = UserAPI(env).get_list_of_users(page)
     list_of_users = response.json()
     assert list_of_users["page"] == page, f'Failed to get page number {page}, actual page = {list_of_users["page"]}' \
                                           f'Or wrong request entirely.' \
@@ -55,7 +55,7 @@ def test_put_user(env):
         Test response for PUT request for user.
     """
     data = {"email": env.email}
-    response = TestAPI(env).put_user(1, data)
+    response = UserAPI(env).put_user(1, data)
     update = response.json()
     assert response.status_code == HTTPStatus.OK, 'Failed to update'
     assert "updatedAt" in update, 'Failed to update'
@@ -66,7 +66,7 @@ def test_patch_user(env):
         Test response for PATCH request for user.
     """
     data = {"email": env.email}
-    response = TestAPI(env).patch_user(1, data)
+    response = UserAPI(env).patch_user(1, data)
     update = response.json()
     assert response.status_code == HTTPStatus.OK, f'Request failed: Status Code {response.status_code}' \
                                                   f'Expected: {HTTPStatus.OK}'
@@ -78,7 +78,7 @@ def test_delete_user(env):
     """
         Test response for DELETE request for user.
     """
-    response = TestAPI(env).delete_user(1)
+    response = UserAPI(env).delete_user(1)
     assert response.status_code == HTTPStatus.NO_CONTENT, f'Request failed: Status Code {response.status_code}' \
                                                           f'Expected: {HTTPStatus.NO_CONTENT}'
 
@@ -87,7 +87,7 @@ def test_get_user_fail(env):
     """
         Test response for wrong GET request for user.
     """
-    response = TestAPI(env).get_user(23)
+    response = UserAPI(env).get_user(23)
     assert response.status_code == HTTPStatus.NOT_FOUND, f'Request failed: Status Code {response.status_code}' \
                                                          f'Expected: {HTTPStatus.NOT_FOUND}'
 
@@ -110,6 +110,6 @@ def test_register(email, password, env):
         data.update({"password": eval(password)})
     else:
         data.update({"password": password})
-    response = TestAPI(env).post_register(data)
+    response = UserAPI(env).post_register(data)
     assert response.status_code == HTTPStatus.BAD_REQUEST, f'Request failed: Status Code {response.status_code}' \
                                                            f'Expected: {HTTPStatus.NOT_FOUND}'

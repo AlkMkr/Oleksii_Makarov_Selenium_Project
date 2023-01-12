@@ -44,7 +44,7 @@ def test_logout_from_cart(open_cart_page):
         Clicks on Burger Menu and then on Logout button.
         Checks if Login Button is displayed on login Page. Asserting if Logout was successful.
     """
-    cart_page = open_cart_page
+    cart_page = open_cart_page.open_burger_menu()
     login_page = cart_page.logout()
     assert login_page.is_login_button_displayed() is True, 'Logout unsuccessful'
 

@@ -1,5 +1,4 @@
 import pytest
-from saucedemo_framework.utilities.config_parser import ReadConfig as RC
 
 
 @pytest.mark.smoke
