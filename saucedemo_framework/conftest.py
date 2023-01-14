@@ -1,11 +1,21 @@
 import json
+from contextlib import suppress
 
+import allure
 import pytest
 
 from saucedemo_framework.CONSTANTS import ROOT_DIR
 from saucedemo_framework.page_objects.login_page import LoginPage
 from saucedemo_framework.utilities.config import Config
 from saucedemo_framework.utilities.driver_factory import DriverFactory
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    return rep
 
 
 @pytest.fixture(scope='session')
@@ -19,7 +29,7 @@ def env():
 
 
 @pytest.fixture()
-def create_driver(env):
+def create_driver(env, request):
     """
         Creates webdriver based on data in config. Opens site based on config data. Maximizes window. Yields driver.
         Can be headless.
@@ -29,6 +39,10 @@ def create_driver(env):
     driver.maximize_window()
     driver.get(env.base_url)
     yield driver
+    if request.node.rep_call.failed:
+        with suppress(Exception):
+            allure.attach(driver.get_screenshot_as_png(), name=request.function.__name,
+                          attachment_type=allure.attachment_type.PNG)
     driver.quit()
 
 

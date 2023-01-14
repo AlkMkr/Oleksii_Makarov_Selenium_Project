@@ -1,8 +1,12 @@
+import allure
+
+from saucedemo_framework.utilities.decorator import auto_add_step
 from saucedemo_framework.utilities.web_ui.base_page import BasePage
 from saucedemo_framework.page_objects.login_page import LoginPage
 from saucedemo_framework.locators import locators as p
 
 
+@auto_add_step
 class BurgerMenu(BasePage):
     def __init__(self, driver):
         super().__init__(driver)

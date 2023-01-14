@@ -1,7 +1,9 @@
 from saucedemo_framework.locators import locators as p
+from saucedemo_framework.utilities.decorator import auto_add_step
 from saucedemo_framework.utilities.web_ui.base_page import BasePage
 
 
+@auto_add_step
 class LoginPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)

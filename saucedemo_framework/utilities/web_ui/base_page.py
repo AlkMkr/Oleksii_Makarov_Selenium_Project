@@ -2,7 +2,10 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from saucedemo_framework.utilities.decorator import auto_add_step
 
+
+@auto_add_step
 class BasePage:
     def __init__(self, driver):
         self._driver = driver
