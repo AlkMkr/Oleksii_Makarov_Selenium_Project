@@ -1,3 +1,6 @@
 /Oleksii_Makarov/
 /tests/.pytest_cache/
 __pycache__
+/allure_report/
+.idea
+/.idea/
