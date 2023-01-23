@@ -23,7 +23,7 @@ def env():
     """
         Reads data from json config.
     """
-    with open(f'{ROOT_DIR}\configurations\config.json') as file:
+    with open(f'{ROOT_DIR}/configurations/config.json') as file:
         env_dict = json.loads(file.read())
     return Config(**env_dict)
 
