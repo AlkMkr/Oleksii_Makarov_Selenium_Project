@@ -3,4 +3,5 @@
 __pycache__
 /allure_report/
 .idea
+.idea/
 /.idea/
