@@ -25,6 +25,7 @@ class DriverFactory:
             chrome_option = C_Options()
             if is_headless:
                 chrome_option.add_argument('--headless')
+                chrome_option.add_argument('--no-sandbox')
             driver = Chrome(service=Service(ChromeDriverManager().install()), options=chrome_option)
         elif int(driver_id) == 2:
             firefox_option = F_Options()
